@@ -1,5 +1,5 @@
 #!/bin/bash
-set -o errexit
+#set -o errexit  #grep void cause error
 cd $1
 cd ..
 base_dir=`pwd`
@@ -29,6 +29,12 @@ case "$select" in
 ;;
 
 3)  # git add -i commit push
+  name_check=`grep "@github" '.git/config'`
+  if [ -z "$name_check" ]; then
+    read -p "Enter user name at github:" name
+    sed -i "s,https://*github.com,https://$name@github.com,g" ./.git/config
+    cat .git/config
+  fi
   git add -i
   read -p "Press Enter to add commit." conti
   git commit
