@@ -38,9 +38,8 @@ case "$select" in
   git add -i
   read -p "Press Enter to add commit." conti
   git commit
-  read -p "Press nter to push." conti
+  read -p "Press Enter to push." conti
   git push
-  echo "exit"
 ;;
 4)  # branch
 ;;
