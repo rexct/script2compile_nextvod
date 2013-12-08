@@ -1,7 +1,8 @@
 #!/bin/bash
 set -o errexit
+script_project="script2compile_nextvod"
 base_dir=`pwd`
-script_dir=$base_dir/"script2compile_nexvod"
+script_dir=$base_dir/$script_project
 kernel_dir=$base_dir/"kernel-pdk7105"
 echo "1. Update script file"
 echo "2. Compile kernel"
@@ -14,8 +15,8 @@ echo "9. Special system setup"
 read -p "Please input selection number:" select
 case "$select" in
 1)
-  read -p "Press enter to update scropt file from https://github.com/rexct/$script_dir" $go
-  git clone https://github.com/rexct/$script_dir
+  read -p "Press enter to update scropt file from https://github.com/rexct/$script_project" $go
+  git clone https://github.com/rexct/$script_project
   ;;
 2)
   $script_dir/make_kernel.sh $kernel_dir
