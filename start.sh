@@ -1,9 +1,10 @@
 #!/bin/bash
 set -o errexit
 script_project="script2compile_nextvod"
-base_dir=`pwd`
+kernel_project="kernel-pdk7105"
+base_dir="/home/sh4twbox/ST_dev"
 script_dir=$base_dir/$script_project
-kernel_dir=$base_dir/"kernel-pdk7105"
+kernel_dir=$base_dir/$kernel_project
 echo "1. Update script file"
 echo "2. Compile kernel"
 echo "3. Update kernel source code from github"
@@ -16,14 +17,21 @@ read -p "Please input selection number:" select
 case "$select" in
 1)
   read -p "Press enter to update scropt file from https://github.com/rexct/$script_project" $go
-  git clone https://github.com/rexct/$script_project
+  cd $script_dir
+  git fetch https://github.com/rexct/$script_project master
   ;;
 2)
   $script_dir/make_kernel.sh $kernel_dir
   ;;
 3)
-  echo "update kernel source:$kernel_dir"
-  git clone https://github.com/rexct/$kernel_dir
+  echo "update kernel source:$kernel_project"
+  if [ -d "$kernel_dir" ]; then
+    cd $kernel_dir
+    git fetch https://github.com/rexct/$kernel_project
+  else
+    cd $base_dir
+    git clone https://github.com/rexct/$kernel_project
+  fi
   ;;
 4)
   # compile uboot
