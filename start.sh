@@ -18,7 +18,7 @@ case "$select" in
 1)
   read -p "Press enter to update scropt file from https://github.com/rexct/$script_project" $go
   cd $script_dir
-  git fetch https://github.com/rexct/$script_project master
+  git pull
   ;;
 2)
   $script_dir/make_kernel.sh $kernel_dir
@@ -27,7 +27,7 @@ case "$select" in
   echo "update kernel source:$kernel_project"
   if [ -d "$kernel_dir" ]; then
     cd $kernel_dir
-    git fetch https://github.com/rexct/$kernel_project
+    git pull
   else
     cd $base_dir
     git clone https://github.com/rexct/$kernel_project

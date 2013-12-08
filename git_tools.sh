@@ -1,6 +1,7 @@
 #!/bin/bash
 set -o errexit
-cd $1/..
+cd $1
+cd ..
 base_dir=`pwd`
 ls $base_dir
 read -p "Set working directory: $base_dir/" dir1
