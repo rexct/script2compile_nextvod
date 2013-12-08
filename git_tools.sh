@@ -19,7 +19,8 @@ case "$select" in
   read -p "user.email:" email
   git config --global user.name "$name"
   git config --global user.email "$email"
-
+  sed -i "s,https://*github.com,https://$name@github.com,g" ./.git/config
+  cat ./.git/config
 ;;
 
 2)  # git status
