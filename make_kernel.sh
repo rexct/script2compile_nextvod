@@ -3,7 +3,7 @@ set -o errexit
 cpu=`grep processor  /proc/cpuinfo |wc -l`
 echo "Use $cpu cpu(s).  script:rexct"
 kernel_dir=$1
-script_dir="script2compile_nexvod"
+script_dir="script2compile_nextvod"
 
 cd $kernel_dir
 echo "Kerel source at `pwd`"
